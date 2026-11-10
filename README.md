@@ -30,9 +30,7 @@ Live app at [upwind-explorer.vercel.app](https://upwind-explorer.vercel.app) —
 
 ### [HIL Debug Workbench](https://github.com/apandya55/hil_debug_workbench) — Automated Embedded Crash Recovery
 
-If you work with microcontrollers, you know the drill: your firmware crashes on bare metal, and instead of a clean stack trace, you get a raw hex register dump over UART (`Guru Meditation Error: Core 0 panic'ed`).
-
-Resolving that by hand means finding your cross-compiler toolchain, pulling the ELF binary out of `.pio/build/`, running `addr2line` on every frame address, reading the source, writing a fix, rebuilding, and flashing over USB. After doing that dozens of times on late-night debugging sessions, I automated the whole cycle.
+Working with microcontrollers has taught me on the firmware crashes that are part of the process. Resolving that by hand means finding your cross-compiler toolchain, pulling the ELF binary out of `.pio/build/`, running `addr2line` on every frame address, reading the source, writing a fix, rebuilding, and flashing over USB. After doing that dozens of times on late-night debugging sessions, I automated the whole cycle.
 
 The workbench monitors serial output over USB, catches the panic, maps hex addresses back to C++ source lines via `addr2line`, synthesizes a patch, and triggers PlatformIO to re-flash the board. Works with both ESP32 (Xtensa) and RP2040 (ARM) toolchains.
 
